@@ -21,7 +21,7 @@ How to create an intercept file:
 Also you can add multiple payload positions everywhere you want
 
 ---
----
+
 
 ```go
 package main
