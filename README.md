@@ -16,7 +16,7 @@ Gorude is not a plugin for burpsuite.
 
 How to create an intercept file:
 
-![intercept.txt](https://raw.githubusercontent.com/canack/sobot/main/get-intercept.gif)
+![intercept.txt](https://raw.githubusercontent.com/canack/gorude/main/get-intercept.gif)
 
 Also you can add multiple payload positions everywhere you want
 
