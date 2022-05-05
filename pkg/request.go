@@ -20,7 +20,7 @@ func mainRequest(target HttpHeader) error {
 
 	ssl := ""
 
-	if target.HTTPS_enabled {
+	if target.HTTPSEnabled {
 		ssl = "https://"
 	} else {
 		ssl = "http://"

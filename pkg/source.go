@@ -11,27 +11,27 @@ type HttpHeader struct {
 	Type, Endpoint, HttpVersion, Domain string
 	Headers                             map[string]string
 	PostData                            string
-	HTTPS_enabled                       bool
+	HTTPSEnabled                        bool
 	Payload                             string
 
 	Config Configure
 }
 
 func New() *HttpHeader {
-	make_headers := make(map[string]string)
-	return &HttpHeader{Headers: make_headers, HTTPS_enabled: true}
+	makeHeaders := make(map[string]string)
+	return &HttpHeader{Headers: makeHeaders, HTTPSEnabled: true}
 }
 
-func (m *HttpHeader) PrintHeaders() *HttpHeader {
-	for k, v := range m.Headers {
+func (target *HttpHeader) PrintHeaders() *HttpHeader {
+	for k, v := range target.Headers {
 		fmt.Println(k, ":", v)
 		fmt.Println("-------")
 	}
 
-	return m
+	return target
 }
 
-func (m *HttpHeader) PrintFormData() *HttpHeader {
-	fmt.Println(m.PostData)
-	return m
+func (target *HttpHeader) PrintFormData() *HttpHeader {
+	fmt.Println(target.PostData)
+	return target
 }

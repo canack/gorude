@@ -8,16 +8,16 @@ func refactor(line, payload string) string {
 	search, _ := regexp.Compile("§.*?§")
 
 	for {
-		sonuc := search.FindStringIndex(line)
+		final := search.FindStringIndex(line)
 
-		if len(sonuc) == 0 {
+		if len(final) == 0 {
 			break
 		}
 
-		before := sonuc[0]
-		after := sonuc[1]
-		new := line[:before] + payload + line[after:]
-		line = new
+		before := final[0]
+		after := final[1]
+		newLine := line[:before] + payload + line[after:]
+		line = newLine
 
 	}
 

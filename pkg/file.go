@@ -26,10 +26,10 @@ func (target *HttpHeader) ParseFile(filename string) *HttpHeader {
 
 		// For grabbing first line
 		if first {
-			request_method := strings.Split(text, " ")
-			target.Type = request_method[0]
-			target.Endpoint = request_method[1]
-			target.HttpVersion = request_method[2]
+			requestMethod := strings.Split(text, " ")
+			target.Type = requestMethod[0]
+			target.Endpoint = requestMethod[1]
+			target.HttpVersion = requestMethod[2]
 			first = false
 			continue
 		}
@@ -40,8 +40,8 @@ func (target *HttpHeader) ParseFile(filename string) *HttpHeader {
 		}
 		// Header set section
 		if strings.Contains(text, ":") {
-			parsed_headers := strings.SplitN(text, ":", 2)
-			target.Headers[parsed_headers[0]] = parsed_headers[1]
+			parsedHeaders := strings.SplitN(text, ":", 2)
+			target.Headers[parsedHeaders[0]] = parsedHeaders[1]
 		} else {
 			target.PostData += text
 		}

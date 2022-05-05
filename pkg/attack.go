@@ -2,10 +2,9 @@ package gorude
 
 import (
 	"fmt"
+	"runtime"
 	"sync"
 	"time"
-
-	"github.com/panjf2000/ants/v2"
 )
 
 func (target *HttpHeader) sniper(p string) {
@@ -27,7 +26,7 @@ func (target *HttpHeader) sniper(p string) {
 	}
 
 	time.Sleep(time.Second)
-	SniperHTTP.HTTPS_enabled = target.HTTPS_enabled
+	SniperHTTP.HTTPSEnabled = target.HTTPSEnabled
 
 	mainRequest(SniperHTTP)
 }
@@ -38,19 +37,14 @@ func (target *HttpHeader) Sniper(payload []string) {
 
 	fmt.Println("Sniper attack started")
 
-	poolsize := target.Config.Threads
+	poolSize := target.Config.Threads
+	runtime.GOMAXPROCS(poolSize)
 
-	ant, _ := ants.NewPoolWithFunc(poolsize,
-		func(i interface{}) {
-			target.sniper(i.(string))
-			wg.Done()
-		})
-	defer ant.Release()
-
-	for _, payload_str := range payload {
+	for _, payloadString := range payload {
 
 		wg.Add(1)
-		_ = ant.Invoke(string(payload_str))
+
+		target.sniper(payloadString)
 		time.Sleep(time.Second * time.Duration(target.Config.SleepInterval))
 
 	}

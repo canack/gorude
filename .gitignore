@@ -3,3 +3,4 @@ test_dir
 main.go
 *txt
 gorude
+.idea
